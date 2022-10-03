@@ -1,0 +1,51 @@
+// ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩  ⇩
+// DO NOT ALTER THE TEXT BETWEEN THESE LINES =========={M{E{R{L{I{N{1}N}I}L}R}E}M}=====================================
+let unsortedIntegers = [5, 1, 4, 2, 8]
+// DO NOT ALTER THE TEXT BETWEEN THESE LINES =========={M{E{R{L{I{N{1}N}I}L}R}E}M}=====================================
+// ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧  ⇧
+
+// Add your code below:
+insertionSort(array:unsortedIntegers)
+
+func insertionSort(array:[Int]) {
+    var sortArray = array
+    var pass = 1
+    var totalSwaps = 0
+
+    print("Pass: 0, Swaps: 0/0, Array: \(array)")
+   
+    for i in 1..<sortArray.count {
+        var inserted = false
+        var index = i
+        var prevIndex = index-1
+        var swaps = 0
+
+        while !inserted {
+            if sortArray[index] < sortArray[prevIndex] {
+                swap(array:&sortArray, index1:index, index2:prevIndex)
+                swaps += 1
+                totalSwaps += 1
+                if index > 0{
+                    index -= 1
+                }
+                if prevIndex > 0 {
+                    prevIndex -= 1
+                }
+            }else{
+                inserted = true
+            }
+        }
+
+        print("Pass: \(pass), Swaps: \(swaps)/\(totalSwaps), Array: \(sortArray)")
+        pass += 1
+    }
+    
+}
+
+func swap(array:inout [Int], index1: Int, index2: Int) {
+    let elem1 = array[index1]
+    let elem2 = array[index2]
+
+    array[index1] = elem2
+    array[index2] = elem1
+}
